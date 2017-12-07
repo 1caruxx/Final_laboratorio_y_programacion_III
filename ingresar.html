@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ingresar</title>
+
+    <link href="./src/frontend/img/favicon.ico" rel="icon" type="image/png" />
+
+    <script type="text/javascript" src="./vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+    <script type="text/javascript" src="./vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./src/frontend/css.css">
+
+    <script type="text/javascript" src="./src/frontend/script/ingresar.js"></script>
+</head>
+
+<body class="bg">
+
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+
+                        <div class="form-top text-info">
+                            <div class="form-top-left">
+                                <h3 class="h3 text-info text-uppercase">Ingreso de auto</h3>
+                                <p class="lead">Ingrese los datos para ingresar el auto:</p>
+                            </div>
+                        </div>
+
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form" id="form">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Marca</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-dashboard"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="marca" placeholder="Marca" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Patente</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-barcode"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="patente" placeholder="Patente" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Color</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tint"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="color" placeholder="Color" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Foto</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-camera"></i>
+                                            </span>
+
+                                            <input type="file" class="form-control" name="foto" id="filFoto" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-info btn-block" id="btnEnviar">Enviar</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="reset" class="btn btn-warning btn-block" id="btnEnviar">Limpiar</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
