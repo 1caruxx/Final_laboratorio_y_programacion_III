@@ -31,6 +31,8 @@
 
         $this->post("[/]" , function(Request $request , Response $response) {
 
+            var_dump($_FILES["foto"]);
+
             $datosEmpleado = $request->getParsedBody();
             $consulta = "INSERT INTO `empleados`(`apellido`, `nombre`, `clave`, `mail`, `turno`, `sexo`, `foto`, `estado`, `perfil`) VALUES ('".$datosEmpleado["apellido"]."','".$datosEmpleado["nombre"]."','".$datosEmpleado["clave"]."','".$datosEmpleado["mail"]."','".$datosEmpleado["turno"]."','".$datosEmpleado["sexo"]."',:foto,1,'".$datosEmpleado["perfil"]."')";
             Archivo::Agregar("./src/backend/file/empleados.json" , '{"mail":"'.$datosEmpleado["mail"].'","apellido":"'.$datosEmpleado["apellido"].'","nombre":"'.$datosEmpleado["nombre"].'","logins":[],"operaciones":[]}'."\r\n");

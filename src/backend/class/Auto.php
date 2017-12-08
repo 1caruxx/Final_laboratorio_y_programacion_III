@@ -59,7 +59,7 @@
             $datosAuto = $request->getParsedBody();
             $fechaEgreso = new DateTime();
             $JWTdecodeado = JWT::decode($token , "12345" , array('HS256'));
-
+            
             try {
             
                 $conexcion = new PDO($datos , $user , $pass);
@@ -68,16 +68,21 @@
                 $fila = $resultados->fetch(PDO::FETCH_ASSOC);
 
                 $fechaIngreso = new DateTime($fila["fecha_ingreso"]);
+                $importe = Auto::CalcularImporte($fechaIngreso , $fechaEgreso);
 
                 $consulta = "UPDATE `administracion` SET `id_empleado_salida`={$JWTdecodeado->id},
                     `fecha_salida`='".$fechaEgreso->format(DateTime::ATOM)."',
-                    `importe`=".Auto::CalcularImporte($fechaIngreso , $fechaEgreso).",
+                    `importe`=".$importe.",
                     `tiempo`=".($fechaIngreso->diff($fechaEgreso))->format("%H")."
                     WHERE `patente`='".$datosAuto["patente"]."'";
 
-                BaseDeDatos::Administrar($request , $response , $token , $consulta);
+                $resultados = $conexcion->prepare($consulta);
+                $resultados->execute();
                 $resultados = $conexcion->prepare("UPDATE `cocheras` SET `ocupada`=0 WHERE `id`=".$fila["id_cochera"]);
                 $resultados->execute();
+
+                $response->getBody()->write('{"valido":"true","mensaje":"Se ha realizado correctamente la operacion. Se deben abonar: '.$importe.'"}');
+
                 $conexcion = null;
             }
             catch(Exception $exception) {

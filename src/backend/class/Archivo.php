@@ -19,7 +19,7 @@
 
                 fclose($archivo);
 
-                return $elementos;
+                return array_filter($elementos);
             }
         }
 

@@ -50,7 +50,7 @@
                     unlink("./src/backend/img/".$resultados->fetch(PDO::FETCH_ASSOC)["foto"]);
                 }
             
-                if($archivo["foto"]) {
+                if($archivo["foto"]["name"]) {
 
                     $foto = date("Gis").".".pathinfo($archivo["foto"]["name"] , PATHINFO_EXTENSION);
                     $rutaFoto = "./src/backend/img/".$foto;
@@ -59,8 +59,10 @@
                     move_uploaded_file($archivo["foto"]["tmp_name"] , $rutaFoto);
                 }
                 else {
- 
+
                     $resultados = $conexcion->prepare($consulta);
+                    $foto = null;
+                    $resultados->bindParam(':foto' , $foto);
                 }
             
                 $resultados->execute();
@@ -74,7 +76,7 @@
                 $JWTdecodeado = JWT::decode($token , "12345" , array('HS256'));
                 Empleado::RegistrarOperacion($JWTdecodeado->mail);
 
-                $response->getBody()->write('{"valido":"true","mensaje":"Se ha realizado correctamente la operacion."}');
+                $response->getBody()->write('{"valido":"true","mensaje":"Se ha realizado correctamente la operacion."}'); 
             }
             catch(Exception $exception) {
             

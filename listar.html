@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Principal</title>
+    <title>Historial</title>
     <link href="./src/frontend/img/favicon.ico" rel="icon" type="image/png" />
 
     <script type="text/javascript" src="./vendor/jquery/dist/jquery.min.js"></script>
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./src/frontend/css.css">
 
     <script type="text/javascript" src="./src/frontend/script/Manejadora.js"></script>
-    <script type="text/javascript" src="./src/frontend/script/principal.js"></script>
+    <script type="text/javascript" src="./src/frontend/script/listar.js"></script>
 </head>
 
 <body class="bg" id="bd">
@@ -32,31 +32,25 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 text-info">
                         <h1 class="">
-                            <strong>Autos alojados</strong>
+                            <strong>Historial de empleados</strong>
                         </h1>
                     </div>
                 </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4 text-info">
-
-                        <input type="text" class="form-control" name="marca" placeholder="Buscar por patente" />
-
-                    </div>
-                </div>
-                <br/>
                 <div class="table-responsive" style="background-color:white;">
-                    <table class="table table-bordered" id="tablaAutos">
+                    <table class="table table-bordered" id="tablaEmpleados">
 
                     </table>
                 </div>
-            </div>
-            <br/>
-            <button type="button" class="btn btn-info" onclick="Mostrar()">
-                    <i class="glyphicon glyphicon-repeat"></i>&ensp;Refrescar lista
-            </button>
-        </div>
+                <br/>
 
+                <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
+                    <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
+                </button>
+                <button type="button" class="btn btn-info" onclick="Mostrar()">
+                    <i class="glyphicon glyphicon-repeat"></i>&ensp;Refrescar lista
+                </button>
+            </div>
+        </div>
 </body>
 
 </html>

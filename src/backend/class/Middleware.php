@@ -15,12 +15,72 @@
             try {
 
                 $conexcion = new PDO($datos , $user , $pass);
-                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."' and `clave`='".$datosEmpleado["clave"]."'");
+                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."' OR `turno`='".$datosEmpleado["turno"]."'");
                 $resultados->execute();
 
                 if($fila = $resultados->fetch(PDO::FETCH_ASSOC)) {
 
-                    $response->getBody()->write('{"valido":"false","mensaje":"El empleado ya existe."}');
+                    $response->getBody()->write('{"valido":"false","mensaje":"El empleado ya existe o esta ocupado el puesto."}');
+                }
+                else {
+
+                    $response = $next($request , $response);
+                }
+            }
+            catch(Exception $exception) {
+
+                $response->getBody()->write('{"valido":"false","mensaje":"Se ha atrapado una excepcion: '.$exception->getMessage().'"}');
+            }
+
+            return $response;
+        }
+
+        public static function VerificarSuspension($request , $response , $next) {
+
+            $datos = "mysql:host=localhost;dbname=frankies";
+            $user = "root";
+            $pass = "";
+            $datosEmpleado = $request->getParsedBody();
+
+            try {
+
+                $conexcion = new PDO($datos , $user , $pass);
+                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."' and `estado`!=1");
+                $resultados->execute();
+
+                if($fila = $resultados->fetch(PDO::FETCH_ASSOC)) {
+
+                    $response->getBody()->write('{"valido":"false","mensaje":"El empleado ya ha sido previamente suspendido o eliminado."}');
+                }
+                else {
+
+                    $response = $next($request , $response);
+                }
+            }
+            catch(Exception $exception) {
+
+                $response->getBody()->write('{"valido":"false","mensaje":"Se ha atrapado una excepcion: '.$exception->getMessage().'"}');
+            }
+
+            return $response;
+        }
+
+        public static function VerificarEliminacion($request , $response , $next) {
+
+            $datos = "mysql:host=localhost;dbname=frankies";
+            $user = "root";
+            $pass = "";
+            $datosEmpleado = $request->getParsedBody();
+
+            try {
+
+                $conexcion = new PDO($datos , $user , $pass);
+                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."' and `estado`=0");
+                $resultados->execute();
+
+                if($fila = $resultados->fetch(PDO::FETCH_ASSOC)) {
+
+                    $response->getBody()->write('{"valido":"false","mensaje":"El empleado ya ha sido previamente eliminado."}');
                 }
                 else {
 

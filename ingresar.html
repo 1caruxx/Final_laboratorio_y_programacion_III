@@ -19,10 +19,15 @@
 
     <link rel="stylesheet" href="./src/frontend/css.css">
 
+    <script type="text/javascript" src="./src/frontend/script/Manejadora.js"></script>
     <script type="text/javascript" src="./src/frontend/script/ingresar.js"></script>
 </head>
 
-<body class="bg">
+<body id="bd" class="bg">
+
+    <div class="container" style="padding-top: 1em;">
+        <div class="row" id="barra"></div>
+    </div>
 
     <div class="top-content">
 
@@ -107,6 +112,11 @@
                         </div>
                     </div>
                 </div>
+                <br/>
+
+                <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
+                    <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
+                </button>
             </div>
         </div>
     </div>

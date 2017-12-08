@@ -18,94 +18,39 @@
 
     <link rel="stylesheet" href="./src/frontend/css.css">
 
+    <script type="text/javascript" src="./src/frontend/script/Manejadora.js"></script>
     <script type="text/javascript" src="./src/frontend/script/historial.js"></script>
 </head>
 
 <body class="bg" id="bd">
     <div class="container" style="padding-top: 1em;">
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex6-collapse">
-                    <span class="sr-only">Desplegar navegación</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="" class="navbar-brand" title="este eres tu" id="imgUser" />
-            </div>
+        <div class="row" id="barra"></div>
 
-            <div class="collapse navbar-collapse navbar-ex6-collapse">
-                <ul class="nav navbar-nav">
-
-                    <li class="dropdown dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="navUser"></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#" onclick="Deslogear()">
-                                    <i class="glyphicon glyphicon-off"></i> Salir</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Empleados
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#" onclick="Registro()">
-                                    <i class="glyphicon glyphicon-plus"></i> Alta</a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="Deslogear()">
-                                    <i class="glyphicon glyphicon-th-list"></i> Listar</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Autos
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#" onclick="Registro()">
-                                    <i class="glyphicon glyphicon-arrow-up"></i>Ingresar</a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="Deslogear()">
-                                    <i class="glyphicon glyphicon-time"></i>Historial</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-
-        </nav>
         <div class="inner-bg">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text-info">
-                            <h1 class="">
-                                <strong>Historial de aparcamientos</strong>
-                            </h1>
-                        </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-info">
+                        <h1 class="">
+                            <strong>Historial de aparcamientos</strong>
+                        </h1>
                     </div>
-                    <div class="table-responsive" style="background-color:white;">
-                        <table class="table table-bordered" id="tablaAutos">
-    
-                        </table>
-                    </div>
-                    <br/>
-                    
-                            <button type="button" class="btn btn-info" onclick="location.href = './principal.html'"><i class="glyphicon glyphicon-arrow-left"></i>Volver</button>
                 </div>
+                <div class="table-responsive" style="background-color:white;">
+                    <table class="table table-bordered" id="tablaAutos">
+
+                    </table>
+                </div>
+                <br/>
+
+                <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
+                    <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
+                </button>
+                <button type="button" class="btn btn-info" onclick="Mostrar()">
+                    <i class="glyphicon glyphicon-repeat"></i>&ensp;Refrescar lista
+                </button>
             </div>
-
-        
-
+        </div>
 </body>
 
 </html>

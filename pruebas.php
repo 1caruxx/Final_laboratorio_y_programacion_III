@@ -25,14 +25,11 @@ echo $diferencia->format("%H %i");*/
 
     Empleado::RegistrarOperacion("fernando@hotmail.com");*/
     
-    $foto = date("Gis").".jpg";
-    $rutaFoto = "./src/backend/img/".$foto;
+    // $foto = date("Gis").".jpg";
+    // $rutaFoto = "./src/backend/img/".$foto;
 
-    copy("./src/frontend/img/userDefault.jpg" , $rutaFoto);
+    // copy("./src/frontend/img/userDefault.jpg" , $rutaFoto);
 
-
-
-
-
+    Empleado::Estadistica($_POST["mail"] , $_POST["fecha"] , $_POST["fecha2"]);
 
 ?>

@@ -28,15 +28,9 @@ CREATE TABLE `administracion` (
   `importe` float unsigned NOT NULL,
   `tiempo` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 
-INSERT INTO administracion VALUES
-("1","3e","BMW","red","232735.jpg","31","2017-12-06 23:27:35","1","4","2017-12-07 06:26:29","60","6"),
-("2","3e","BMW","red","54158.jpg","31","2017-12-07 05:41:58","1","4","2017-12-07 06:26:29","60","6"),
-("3","4w","Fiat","red","54212.jpg","31","2017-12-07 05:42:12","2","4","2017-12-07 06:42:56","10","1"),
-("4","5t","ford","red","54224.jpg","31","2017-12-07 05:42:24","3","4","2017-12-07 06:44:04","10","1"),
-("5","6y","BMW","red","71018.jpeg","4","2017-12-07 07:10:18","1","0","","0","0");
 
 
 
@@ -52,7 +46,7 @@ CREATE TABLE `cocheras` (
 
 
 INSERT INTO cocheras VALUES
-("1","1","43","1","1"),
+("1","1","43","0","1"),
 ("2","2","74","0","0"),
 ("3","3","89","0","0"),
 ("4","2","35","0","1"),
@@ -73,15 +67,13 @@ CREATE TABLE `empleados` (
   `estado` int(10) unsigned NOT NULL,
   `perfil` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 
 
 INSERT INTO empleados VALUES
-("4","Lareu","Fernando","12345","fernando@hotmail.com","m","M","122646.jpg","1","administrador"),
-("30","mendez","juanito","12345","juanito@hotmail.com","t","M","71457.jpg","2","empleado"),
-("31","Sanchez","Miguel","12345","miguel@hotmail.com","t","M","221702.jpg","1","empleado"),
-("49","Sanchez","Leandro","12345","leandro@hotmail.com","M","M","52858.jpg","1","empleado"),
-("50","rodriguez","Pedro","12345","pedro@hotmail.com","M","M","81134.jpg","1","empleado");
+("4","Lareu","Fernando","12345","fernando@hotmail.com","M","M","122646.jpg","1","administrador"),
+("67","Mendez","Pedro","12345","pedro@hotmail.com","T","M","","1","empleado"),
+("68","wanda","shrek","12345","peddro@hotmail.com","N","M","100736.jpg","1","empleado");
 
 
 

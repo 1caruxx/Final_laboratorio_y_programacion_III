@@ -119,7 +119,7 @@
 
                     foreach($empleado->operaciones as $operacion) {
 
-                        if($operacion->fecha == date("Y-n-j")) {
+                        if($operacion->fecha == date("Y-m-d")) {
 
                             $operacion->cantidad++;
                             Archivo::Escribir("./src/backend/file/empleados.json" , array_filter($empleados));
@@ -130,6 +130,65 @@
                     array_push($empleado->operaciones , json_decode('{"fecha":"'.date("Y-n-j").'","cantidad":1}'));
                     Archivo::Escribir("./src/backend/file/empleados.json" , array_filter($empleados));
                 }
+            }
+        }
+
+        public static function Estadistica($mail , $fecha , $fecha2=null) {
+
+            $empleados = Archivo::ObtenerElementos("./src/backend/file/empleados.json");
+            $empleado = null;
+            $array = array();
+            $array["fechas"] = array();
+            $array["cantidadDeOperaciones"] = 0;
+            $array["fechaLogin"] = array();
+            $array["cantidadDeLogins"] = 0;
+
+            $fecha = explode("-" , $fecha);
+            $fecha = $fecha[0].$fecha[1].$fecha[2];
+            $fecha = intval($fecha);
+
+            foreach($empleados as $item) {
+            
+                if($item && $item->mail == $mail) {
+            
+                    $empleado = $item;
+                }
+            }
+
+            if($fecha2) {
+
+                $fecha2 = explode("-" , $fecha2);
+                $fecha2 = $fecha2[0].$fecha2[1].$fecha2[2];
+                $fecha2 = intval($fecha2);
+
+                foreach($empleado->operaciones as $operacion) {
+
+                    $fechaOperacion = explode("-" , $operacion->fecha);
+                    $fechaOperacion = $fechaOperacion[0].$fechaOperacion[1].$fechaOperacion[2];
+                    $fechaOperacion = intval($fechaOperacion);
+
+                    if($fechaOperacion>=$fecha && $fechaOperacion<=$fecha2) {
+
+                        array_push($array["fechas"] , $operacion);
+                        $array["cantidadDeOperaciones"] += $operacion->cantidad;
+                    }
+                }
+
+                foreach($empleado->logins as $login) {
+
+                    $fechaLogin = explode("-" , substr($empleado->logins[0] , 0 , 10));
+                    $fechaLogin = $fechaLogin[0].$fechaLogin[1].$fechaLogin[2];
+                    $fechaLogin = intval($fechaLogin);
+
+                    if($fechaLogin>=$fecha && $fechaLogin<=$fecha2) {
+
+                        array_push($array["fechaLogin"] , $login);
+                    }
+                }
+
+                $array["cantidadDeLogins"] += count($array["fechaLogin"]);
+
+                var_dump(json_encode($array));
             }
         }
     }
