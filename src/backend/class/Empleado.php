@@ -127,13 +127,20 @@
                         }
                     }
 
-                    array_push($empleado->operaciones , json_decode('{"fecha":"'.date("Y-n-j").'","cantidad":1}'));
+                    array_push($empleado->operaciones , json_decode('{"fecha":"'.date("Y-m-d").'","cantidad":1}'));
                     Archivo::Escribir("./src/backend/file/empleados.json" , array_filter($empleados));
                 }
             }
         }
 
-        public static function Estadistica($mail , $fecha , $fecha2=null) {
+        public static function Estadistica($request , $response) {
+
+            $datos = $request->getParsedBody();
+            $mail = $datos["mail"];
+            $fecha = $datos["fecha"];
+            @$fecha2 = $datos["fecha2"];
+
+            $encontrado = false;
 
             $empleados = Archivo::ObtenerElementos("./src/backend/file/empleados.json");
             $empleado = null;
@@ -152,7 +159,15 @@
                 if($item && $item->mail == $mail) {
             
                     $empleado = $item;
+                    $encontrado = true;
+                    break;
                 }
+            }
+
+            if(!$encontrado) {
+
+                $response->getBody()->write('{"valido":"false","mensaje":"Empleado inexistente."}');
+                return;
             }
 
             if($fecha2) {
@@ -187,9 +202,39 @@
                 }
 
                 $array["cantidadDeLogins"] += count($array["fechaLogin"]);
-
-                var_dump(json_encode($array));
             }
+            else {
+
+                foreach($empleado->operaciones as $operacion) {
+
+                    $fechaOperacion = explode("-" , $operacion->fecha);
+                    $fechaOperacion = $fechaOperacion[0].$fechaOperacion[1].$fechaOperacion[2];
+                    $fechaOperacion = intval($fechaOperacion);
+                    
+                    if($fechaOperacion == $fecha) {
+
+                        array_push($array["fechas"] , $operacion);
+                        $array["cantidadDeOperaciones"] = $operacion->cantidad;
+                        break;
+                    }
+                }
+
+                foreach($empleado->logins as $login) {
+                    
+                    $fechaLogin = explode("-" , substr($empleado->logins[0] , 0 , 10));
+                    $fechaLogin = $fechaLogin[0].$fechaLogin[1].$fechaLogin[2];
+                    $fechaLogin = intval($fechaLogin);
+                    
+                    if($fechaLogin == $fecha) {
+                    
+                        array_push($array["fechaLogin"] , $login);
+                    }
+                }
+
+                $array["cantidadDeLogins"] += count($array["fechaLogin"]);
+            }
+
+            $response->getBody()->write('{"valido":"true","datos":'.json_encode($array).'}');
         }
     }
 

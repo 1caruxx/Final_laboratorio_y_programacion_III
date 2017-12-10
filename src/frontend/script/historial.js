@@ -21,7 +21,83 @@ $(document).ready(function() {
         
         $("#imgUser").attr("src" , "./src/backend/img/" + datosUsuario.foto);
         $("#navUser").html(datosUsuario.nombre + "<b class='caret'></b>");
+        $('#datetimepickerDesde').datetimepicker();
+        $('#datetimepickerHasta').datetimepicker();
         Mostrar();
+
+        $("#form").bootstrapValidator({
+
+            fields: {
+                patente: {
+                    validators: {
+                        notEmpty: {message: "Se debe completar este campo."},
+                        stringLength: {max: 10 , message: "Se admiten hasta un maximo de 10 caracteres."}
+                    }
+                },
+                fecha: {
+                    validators: {
+                        notEmpty: {message: "Se debe completar este campo."},
+                        date: {
+                            format: 'YYYY-MM-DD',
+                            message: 'Fecha introducida no valida.'
+                        }
+                    }
+                },
+                fecha2: {
+                    validators: {
+                        date: {
+                            format: 'YYYY-MM-DD',
+                            message: 'Fecha introducida no valida.'
+                        }
+                    }
+                }
+            }
+        })
+        .on("success.form.bv" , function(form) {
+                            
+            form.preventDefault();
+            
+            $.ajax({
+                            
+                url: "./admin.php/auto/estadistica",
+                type: "POST",
+                data: {
+
+                    patente: $("#txtPatente").val(),
+                    fecha: $("#datetimepickerDesde").val(),
+                    fecha2: $("#datetimepickerHasta").val()
+                },
+                headers: { token: localStorage.getItem("token") },
+                dataType: "json",
+                async: true
+            })
+            .done(function(response) {
+
+                if(response.valido == "true"){
+
+                    var stringAuxiliar = `Este vehiculo nos ha visitado un total de ${(response.datos).visitasTotales} veces, 
+                    pagado un total de $${(response.datos).importeTotal} y su promedio mensual es de $${(response.datos).promedioMensual}<br/><br/>DETALLE`;
+                    var flag = 0;
+
+                    for(let dato of (response.datos).fechas) {
+
+                        stringAuxiliar += `<br/>Fecha: ${dato.fecha}, importe: ${dato.cantidad}, visitas: ${dato.visitas}`;
+                    }
+
+                    stringAuxiliar += `<br/><br/>El promedio mensual de todos los autos es: ${(response.datos).promedioMensual}`
+
+                    $("#divAlert").html(`<div class='alert alert-info'>${stringAuxiliar}</div>`);
+                }
+                else {
+
+                    $("#divAlert").html(`<div class='alert alert-danger'>${response.mensaje}</div>`);
+                }
+            })
+            .fail(function(response) {
+                            
+                alert("Algo salio mal: " + response);
+            });
+        })              
     }
 });
 
@@ -55,7 +131,6 @@ function Mostrar() {
                                 <td><h4>Importe</h4></td>
                                 <td><h4>Tiempo</h4></td>
                                 <td><h4>Foto</h4></td>
-                                <td><h4>Estadistica</h4></td>
                               </tr>`;
         
         for(let item of response) {
@@ -76,10 +151,9 @@ function Mostrar() {
                                     <td>${item.id_cochera}</td>
                                     <td>${item.id_empleado_salida}</td>
                                     <td>${fechaSalida}</td>
-                                    <td>${item.importe}</td>
-                                    <td>${item.tiempo}</td>
+                                    <td>$${item.importe}</td>
+                                    <td>${item.tiempo} Hs.</td>
                                     <td><img src="${foto}" width="50px" height="50px"/></td>
-                                    <td><button type="button" class="btn btn-info">Ver</button></td>
                                 </tr>`;
             }
         

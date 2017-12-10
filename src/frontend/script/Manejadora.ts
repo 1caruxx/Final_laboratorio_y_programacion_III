@@ -10,7 +10,7 @@ $(document).ready(function () {
                                                 <span class="icon-bar"></span>
                                                 <span class="icon-bar"></span>
                                             </button>
-                                            <img src="" class="navbar-brand" title="Este eres tu" id="imgUser" />
+                                            <img src="" class="navbar-brand" title="Este eres tu!" id="imgUser" />
                                         </div>
                             
                                         <div class="collapse navbar-collapse navbar-ex6-collapse">
@@ -28,11 +28,12 @@ $(document).ready(function () {
                                                                 <i class="glyphicon glyphicon-cog"></i>&ensp;Modificar</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" onclick="Deslogear()">
+                                                            <a href="#" onclick="Deslogear()" title="Cerrar la sesion actual.">
                                                                 <i class="glyphicon glyphicon-off"></i>&ensp;Salir</a>
                                                         </li>
                                                     </ul>
                                                 </li>
+
                                                 <li class="dropdown dropdown">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                         Empleados
@@ -40,15 +41,26 @@ $(document).ready(function () {
                                                     </a>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <a href="#" onclick="Clases.Manejadora.Registro()">
+                                                            <a href="#" onclick="Clases.Manejadora.Registro()" title="Dar de alta un nuevo empleado.">
                                                                 <i class="glyphicon glyphicon-plus"></i>&ensp;Alta</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" onclick="Clases.Manejadora.Listar()">
+                                                            <a href="#" onclick="Clases.Manejadora.Listar()" title="Motrar todos los empleados, suspenderlos, borrarlos y mostrar sus estadisticas.">
                                                                 <i class="glyphicon glyphicon-list"></i>&ensp;Listar</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" onclick="Clases.Manejadora.Modificar()" title="Modificar un empleado existente.">
+                                                                <i class="glyphicon glyphicon-sort"></i>&ensp;Modificar</a>
                                                         </li>
                                                     </ul>
                                                 </li>
+
+                                                <li class="dropdown dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <img src="./src/frontend/img/favicon.ico" width="20px" height="20px">
+                                                    </a>
+                                                </li>
+
                                                 <li class="dropdown dropdown">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                         Autos
@@ -56,16 +68,32 @@ $(document).ready(function () {
                                                     </a>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <a href="#" onclick="Clases.Manejadora.Ingresar()">
+                                                            <a href="#" onclick="Clases.Manejadora.Ingresar()" title="Ingresar un nuevo auto.">
                                                                 <i class="glyphicon glyphicon-arrow-up"></i>&ensp;Ingresar</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" onclick="Clases.Manejadora.MostrarHistorial()">
+                                                            <a href="#" onclick="Clases.Manejadora.MostrarHistorial()" title="Mostrar el historial de los autos aparcados asi como sus estadisticas.">
                                                                 <i class="glyphicon glyphicon-time"></i>&ensp;Historial</a>
                                                         </li>
                                                     </ul>
                                                 </li>
-                            
+
+                                                <li class="dropdown dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        Visualizacion
+                                                        <b class="caret"></b>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="#" title="Cambiar el color de las letras.">
+                                                                <i class="glyphicon glyphicon-text-color"></i>&ensp;Color de fuente</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Cambiar el tipo de fuente.">
+                                                                <i class="glyphicon glyphicon-font"></i>&ensp;Fuente</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </div>
                                     </nav>`);
@@ -80,5 +108,7 @@ namespace Clases {
         public static Registro() { location.href = "./alta.html"; }
         public static Volver() { location.href = "./principal.html"; }
         public static Listar() { location.href = "./listar.html"; }
+        public static Modificar() { location.href = "./modificacion.html"; }
+
     }
 }

@@ -13,6 +13,9 @@
     <script type="text/javascript" src="./vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript" src="./vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
+    <script src="./vendor/moment/moment.js"></script>
+    <script src="./vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
 
@@ -30,25 +33,97 @@
         <div class="inner-bg">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 text-info">
+                    <div class="col-sm- col-sm-offset-1 text-info">
                         <h1 class="">
                             <strong>Historial de aparcamientos</strong>
                         </h1>
                     </div>
                 </div>
-                <div class="table-responsive" style="background-color:white;">
-                    <table class="table table-bordered" id="tablaAutos">
-
-                    </table>
-                </div>
                 <br/>
+                <div class="table-responsive" style="background-color:white;">
+                    <table class="table table-bordered" id="tablaAutos"></table>
+                </div>
+                <div class="row">
+                    <div class="form-box">
 
+                        <div class="form-top text-info">
+                            <div class="form-top-left">
+                                <h3 class="h3 text-info text-uppercase">Estadistica</h3>
+                                <p class="lead">Ingrese la patente del auto, la fecha desde (obligatoria) y hasta (opcional) de los datos
+                                    que quiera ver:</p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form" id="form">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Patente</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-barcode"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="patente" id="txtPatente" placeholder="Patente" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Desde</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text" class="form-control" name="fecha" id="datetimepickerDesde" data-date-format="YYYY-MM-DD" placeholder="Desde"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Hasta</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text" class="form-control" name="fecha2" id="datetimepickerHasta" data-date-format="YYYY-MM-DD" placeholder="Hasta"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-info btn-block" id="btnEnviar">Enviar</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="reset" class="btn btn-warning btn-block" id="btnEnviar">Limpiar</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <br/>
+
+                        <div class="col-md-6 col-sm-offset-3">
+                            <div class="row" id="divAlert"></div>
+                        </div>
+
+                    </div>
+                </div>
                 <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
-                    <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
-                </button>
-                <button type="button" class="btn btn-info" onclick="Mostrar()">
-                    <i class="glyphicon glyphicon-repeat"></i>&ensp;Refrescar lista
-                </button>
+                        <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
+                    </button>
+                    <button type="button" class="btn btn-info" onclick="Mostrar()">
+                        <i class="glyphicon glyphicon-repeat"></i>&ensp;Refrescar lista
+                    </button>
             </div>
         </div>
 </body>

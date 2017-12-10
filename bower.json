@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap":"latest",
     "bootstrapvalidator":"latest",
-    "sweetalert2":"latest"
+    "sweetalert2":"latest",
+    "eonasdan-bootstrap-datetimepicker":"latest"
   }
 }

@@ -45,7 +45,7 @@
             try {
 
                 $conexcion = new PDO($datos , $user , $pass);
-                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."' and `estado`!=1");
+                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `id`=".$datosEmpleado["id"]." and `estado`=".$datosEmpleado["estado"]."");
                 $resultados->execute();
 
                 if($fila = $resultados->fetch(PDO::FETCH_ASSOC)) {

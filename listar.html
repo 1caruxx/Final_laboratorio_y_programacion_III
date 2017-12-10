@@ -13,6 +13,9 @@
     <script type="text/javascript" src="./vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript" src="./vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
+    <script src="./vendor/moment/moment.js"></script>
+    <script src="./vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
 
@@ -29,20 +32,96 @@
 
         <div class="inner-bg">
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 text-info">
                         <h1 class="">
-                            <strong>Historial de empleados</strong>
+                            <strong>Listado de empleados</strong>
                         </h1>
                     </div>
                 </div>
-                <div class="table-responsive" style="background-color:white;">
-                    <table class="table table-bordered" id="tablaEmpleados">
-
-                    </table>
-                </div>
                 <br/>
+                <div class="table-responsive" style="background-color:white;">
+                    <table class="table table-bordered" id="tablaEmpleados" style="opacity:1;"></table>
+                </div>
 
+                <div class="row">
+                    <div class="form-box">
+
+                        <div class="form-top text-info">
+                            <div class="form-top-left">
+                                <h3 class="h3 text-info text-uppercase">Estadistica</h3>
+                                <p class="lead">Ingrese el correo del empleado, la fecha desde (obligatoria) y hasta (opcional) de los datos
+                                    que quiera ver:</p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form" id="form">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">E-Mail</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-envelope"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="correo" id="txtCorreo" placeholder="example@outlook.com" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Desde</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text" class="form-control" name="fecha" id="datetimepickerDesde" data-date-format="YYYY-MM-DD" placeholder="Desde"
+                                            />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Hasta</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text" class="form-control" name="fecha2" id="datetimepickerHasta" data-date-format="YYYY-MM-DD" placeholder="Hasta"
+                                            />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-info btn-block" id="btnEnviar">Enviar</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="reset" class="btn btn-warning btn-block" id="btnEnviar">Limpiar</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <br/>
+                        <div class="col-md-4 col-sm-offset-4">
+                            <div class="row" id="divAlert"></div>
+                        </div>
+
+                    </div>
+
+                </div>
                 <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
                     <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
                 </button>
@@ -51,6 +130,7 @@
                 </button>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

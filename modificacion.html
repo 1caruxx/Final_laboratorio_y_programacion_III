@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Alta</title>
+    <title>Modificacion</title>
 
     <link href="./src/frontend/img/favicon.ico" rel="icon" type="image/png" />
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./src/frontend/css.css">
 
     <script type="text/javascript" src="./src/frontend/script/Manejadora.js"></script>
-    <script type="text/javascript" src="./src/frontend/script/alta.js"></script>
+    <script type="text/javascript" src="./src/frontend/script/modificacion.js"></script>
 </head>
 
 <body id="bd" class="bg">
@@ -39,13 +39,26 @@
 
                         <div class="form-top text-info">
                             <div class="form-top-left">
-                                <h3 class="h3 text-info text-uppercase">Registro</h3>
-                                <p class="lead">Ingrese los datos del nuevo empleado:</p>
+                                <h3 class="h3 text-info text-uppercase">Modificacion</h3>
+                                <p class="lead">Ingrese los datos del empleado a modificar (el mail servira como identificador):</p>
                             </div>
                         </div>
 
                         <div class="form-bottom">
                             <form role="form" action="" method="post" class="login-form" id="form">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">E-Mail</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-envelope"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="mail" id="txtCorreo" placeholder="Correo" />
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Apellido</label>
@@ -69,19 +82,6 @@
                                             </span>
 
                                             <input type="text" class="form-control" name="nombre" id="txtNombre" placeholder="Nombre" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">E-Mail</label>
-                                    <div class=" inputGroupContainer">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-envelope"></i>
-                                            </span>
-
-                                            <input type="text" class="form-control" name="mail" id="txtCorreo" placeholder="Correo" />
                                         </div>
                                     </div>
                                 </div>

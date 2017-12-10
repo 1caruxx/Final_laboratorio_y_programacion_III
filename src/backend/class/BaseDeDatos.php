@@ -45,12 +45,12 @@
             
                 if($baseDeDatos) {
             
-                    $resultados = $conexcion->prepare("SELECT `foto` FROM `".$baseDeDatos."` WHERE `id`=".$datosEmpleado["id"]);
+                    $resultados = $conexcion->prepare("SELECT `foto` FROM `".$baseDeDatos."` WHERE `mail`='".$datosEmpleado["mail"]."'");
                     $resultados->execute();
-                    unlink("./src/backend/img/".$resultados->fetch(PDO::FETCH_ASSOC)["foto"]);
+                    @unlink("./src/backend/img/".$resultados->fetch(PDO::FETCH_ASSOC)["foto"]);
                 }
             
-                if($archivo["foto"]["name"]) {
+                if(@$archivo["foto"]["name"]) {
 
                     $foto = date("Gis").".".pathinfo($archivo["foto"]["name"] , PATHINFO_EXTENSION);
                     $rutaFoto = "./src/backend/img/".$foto;
