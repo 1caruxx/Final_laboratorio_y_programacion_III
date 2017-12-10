@@ -16,7 +16,7 @@ $(document).ready(function () {
         });
     }
     else {
-        
+
         var datosUsuario = JSON.parse(localStorage.getItem("empleado"));
 
         if(datosUsuario.perfil != "administrador") {
@@ -35,8 +35,13 @@ $(document).ready(function () {
             });
         }
         else {
-      
-            $("#imgUser").attr("src" , "./src/backend/img/" + datosUsuario.foto);
+
+            var foto = "";
+            
+            if(datosUsuario.foto) { foto = "./src/backend/img/" + datosUsuario.foto; }
+            else { foto = "./src/frontend/img/userDefault.jpg" }
+                    
+            $("#imgUser").attr("src" , foto);
             $("#navUser").html(datosUsuario.nombre + "<b class='caret'></b>");
 
             $("#form").bootstrapValidator({
@@ -69,7 +74,7 @@ $(document).ready(function () {
                     clave: {
                         validators: {
                             notEmpty: { message: "Se debe completar este campo." },
-                            stringLength: { min: 4, max: 12, message: "Entre 4 y 12 caracteres." }
+                            stringLength: { min: 5, max: 12, message: "Entre 5 y 12 caracteres." }
                         }
                     },
                     confirmar: {

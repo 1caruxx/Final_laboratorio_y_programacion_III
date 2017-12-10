@@ -28,7 +28,7 @@ CREATE TABLE `administracion` (
   `importe` float unsigned NOT NULL,
   `tiempo` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 
 
@@ -67,13 +67,13 @@ CREATE TABLE `empleados` (
   `estado` int(10) unsigned NOT NULL,
   `perfil` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 
 
 INSERT INTO empleados VALUES
 ("4","Lareu","Fernando","12345","fernando@hotmail.com","M","M","122646.jpg","1","administrador"),
-("69","Sanchez","Miguel","12345","miguel@hotmail.com","T","M","","1","empleado"),
-("70","Lopez","Leonardo","12345","leonardo@hotmail.com","N","M","64310.jpg","1","empleado");
+("75","Mendez","Javier","12345","javier@hotmail.com","T","M","","1","empleado"),
+("76","Vidal","Maria","12345","maria@hotmail.com","N","F","175807.jpg","1","empleado");
 
 
 

@@ -36,7 +36,12 @@ $(document).ready(function () {
         }
         else {
 
-            $("#imgUser").attr("src", "./src/backend/img/" + datosUsuario.foto);
+            var foto = "";
+            
+            if(datosUsuario.foto) { foto = "./src/backend/img/" + datosUsuario.foto; }
+            else { foto = "./src/frontend/img/userDefault.jpg" }
+                    
+            $("#imgUser").attr("src" , foto);
             $("#navUser").html(datosUsuario.nombre + "<b class='caret'></b>");
             $('#datetimepickerDesde').datetimepicker();
             $('#datetimepickerHasta').datetimepicker();
@@ -99,7 +104,7 @@ $(document).ready(function () {
 
                             if(flag) {
 
-                                stringAuxiliar = `Historial de logins (${(response.datos).cantidadDeLogins} logins en total): <br/>${fecha}`;
+                                stringAuxiliar = `Historial de logins (${(response.datos).cantidadDeLogins} login(s) en total): <br/>${fecha}`;
                                 flag = 0;
                                 continue;
                             }
@@ -113,12 +118,12 @@ $(document).ready(function () {
                                     
                             if(flag) {
                                     
-                                stringAuxiliar += `<br/><br/>Historial de operaciones (${(response.datos).cantidadDeOperaciones} operaciones en total): <br/>${operacion.fecha}: ${operacion.cantidad} operaciones.`;
+                                stringAuxiliar += `<br/><br/>Historial de operaciones (${(response.datos).cantidadDeOperaciones} operacione(s) en total): <br/>${operacion.fecha}: ${operacion.cantidad} operaciones.`;
                                 flag = 0;
                                 continue;
                             }
                                     
-                            stringAuxiliar += `<br/>${operacion.fecha}: ${operacion.cantidad} operaciones.`;
+                            stringAuxiliar += `<br/>${operacion.fecha}: ${operacion.cantidad} operacione(s).`;
                         }
 
                         $("#divAlert").html(`<div class='alert alert-info'>${stringAuxiliar}</div>`);

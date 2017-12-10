@@ -1,3 +1,1 @@
-{"mail":"fernando@hotmail.com","apellido":"Lareu","nombre":"Fernando","logins":["2017-12-09T06:39:32-03:00","2017-12-09T06:39:59-03:00","2017-12-09T06:52:22-03:00","2017-12-09T06:53:44-03:00","2017-12-09T14:48:11-03:00","2017-12-09T16:52:25-03:00","2017-12-09T16:52:59-03:00","2017-12-09T17:12:31-03:00"],"operaciones":[{"fecha":"2017-12-09","cantidad":85}]}
-{"mail":"miguel@hotmail.com","apellido":"Sanchez","nombre":"Miguel","logins":[],"operaciones":[]}
-{"mail":"leonardo@hotmail.com","apellido":"Lopez","nombre":"Leonardo","logins":["2017-12-09T06:43:46-03:00","2017-12-09T16:52:40-03:00"],"operaciones":[{"fecha":"2017-12-09","cantidad":4}]}
+{"mail":"fernando@hotmail.com","apellido":"Lareu","nombre":"Fernando","logins":[],"operaciones":[]}

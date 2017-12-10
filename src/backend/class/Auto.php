@@ -64,7 +64,7 @@
             try {
             
                 $conexcion = new PDO($datos , $user , $pass);
-                $resultados = $conexcion->prepare("SELECT `fecha_ingreso`,`id_cochera` FROM `administracion` WHERE `patente`='".$datosAuto["patente"]."'");
+                $resultados = $conexcion->prepare("SELECT `fecha_ingreso`,`id_cochera` FROM `administracion` WHERE `patente`='".$datosAuto["patente"]."' and `fecha_salida` IS NULL");
                 $resultados->execute();
                 $fila = $resultados->fetch(PDO::FETCH_ASSOC);
 
@@ -75,10 +75,11 @@
                     `fecha_salida`='".$fechaEgreso->format(DateTime::ATOM)."',
                     `importe`=".$importe.",
                     `tiempo`=".($fechaIngreso->diff($fechaEgreso))->format("%H")."
-                    WHERE `patente`='".$datosAuto["patente"]."'";
+                    WHERE `patente`='".$datosAuto["patente"]."' and `fecha_salida` IS NULL";
 
                 $resultados = $conexcion->prepare($consulta);
                 $resultados->execute();
+
                 $resultados = $conexcion->prepare("UPDATE `cocheras` SET `ocupada`=0 WHERE `id`=".$fila["id_cochera"]);
                 $resultados->execute();
 

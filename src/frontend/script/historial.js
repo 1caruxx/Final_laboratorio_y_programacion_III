@@ -19,7 +19,12 @@ $(document).ready(function() {
 
         var datosUsuario = JSON.parse(localStorage.getItem("empleado"));
         
-        $("#imgUser").attr("src" , "./src/backend/img/" + datosUsuario.foto);
+        var foto = "";
+        
+        if(datosUsuario.foto) { foto = "./src/backend/img/" + datosUsuario.foto; }
+        else { foto = "./src/frontend/img/userDefault.jpg" }
+                
+        $("#imgUser").attr("src" , foto);
         $("#navUser").html(datosUsuario.nombre + "<b class='caret'></b>");
         $('#datetimepickerDesde').datetimepicker();
         $('#datetimepickerHasta').datetimepicker();
@@ -84,7 +89,7 @@ $(document).ready(function() {
                         stringAuxiliar += `<br/>Fecha: ${dato.fecha}, importe: ${dato.cantidad}, visitas: ${dato.visitas}`;
                     }
 
-                    stringAuxiliar += `<br/><br/>El promedio mensual de todos los autos es: ${(response.datos).promedioMensual}`
+                    stringAuxiliar += `<br/><br/>El promedio mensual de todos los autos es: $${(response.datos).promedioMensualTotal}`
 
                     $("#divAlert").html(`<div class='alert alert-info'>${stringAuxiliar}</div>`);
                 }

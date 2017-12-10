@@ -36,7 +36,12 @@ $(document).ready(function () {
         }
         else {
 
-            $("#imgUser").attr("src", "./src/backend/img/" + datosUsuario.foto);
+            var foto = "";
+            
+            if(datosUsuario.foto) { foto = "./src/backend/img/" + datosUsuario.foto; }
+            else { foto = "./src/frontend/img/userDefault.jpg" }
+                    
+            $("#imgUser").attr("src" , foto);
             $("#navUser").html(datosUsuario.nombre + "<b class='caret'></b>");
 
             $("#form").bootstrapValidator({

@@ -40,7 +40,7 @@ $(document).ready(function() {
 
                 swal(
                     'Exito!',
-                    'Bienvenido ' + (response.empleado).nombre,
+                    'Bienvenid@ ' + (response.empleado).nombre,
                     'success'
                   ).then(() =>{
 

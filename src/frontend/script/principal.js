@@ -18,8 +18,12 @@ $(document).ready(function() {
     else {
 
         var datosUsuario = JSON.parse(localStorage.getItem("empleado"));
+        var foto = "";
+
+        if(datosUsuario.foto) { foto = "./src/backend/img/" + datosUsuario.foto; }
+        else { foto = "./src/frontend/img/userDefault.jpg" }
         
-        $("#imgUser").attr("src" , "./src/backend/img/" + datosUsuario.foto);
+        $("#imgUser").attr("src" , foto);
         $("#navUser").html(datosUsuario.nombre + "<b class='caret'></b>");
         Mostrar();
     }
