@@ -1,1 +1,5 @@
-{"mail":"fernando@hotmail.com","apellido":"Lareu","nombre":"Fernando","logins":[],"operaciones":[]}
+{"mail":"fernando@hotmail.com","apellido":"Lareu","nombre":"Fernando","logins":["2017-12-14T09:40:09-03:00","2017-12-14T09:58:57-03:00","2017-12-14T10:00:32-03:00","2017-12-14T10:01:50-03:00","2017-12-14T10:04:58-03:00","2017-12-14T10:11:36-03:00","2017-12-14T10:20:43-03:00","2017-12-14T10:28:13-03:00","2017-12-14T10:30:53-03:00","2017-12-14T10:34:32-03:00","2017-12-14T18:38:59-03:00","2017-12-16T13:08:54-03:00","2017-12-16T15:43:28-03:00"],"operaciones":[{"fecha":"2017-12-14","cantidad":34}]}
+{"mail":"maria@hotmail.com","apellido":"Mendez","nombre":"Maria","logins":["2017-12-14T10:00:56-03:00","2017-12-14T10:30:39-03:00","2017-12-14T10:33:21-03:00","2017-12-16T12:01:01-03:00"],"operaciones":[]}
+{"mail":"tomas@hotmail.com","apellido":"Jefferson","nombre":"Thomas","logins":[],"operaciones":[]}
+{"mail":"julian@hotmail.com","apellido":"dsds","nombre":"dsdsd","logins":["2017-12-17T13:37:30-03:00"],"operaciones":[]}
+{"mail":"javvv@hotmail.com","apellido":"Lareu","nombre":"Maria","logins":["2017-12-17T10:29:01-03:00"],"operaciones":[{"fecha":"2017-12-17","cantidad":1}]}

@@ -30,6 +30,27 @@
 
         <div class="row" id="barra"></div>
 
+        <div class="row col-sm-offset-1">
+            <div class="col-sm-2 text-info">
+                <input type="text" class="form-control" id="marca" placeholder="Buscar por marca"/>
+            </div>
+            <div class="col-sm-2  text-info">
+                <input type="text" class="form-control" id="patente" placeholder="Buscar por patente"/>
+            </div>
+
+            <div class="col-sm-2 text-info">
+                <input type="text" class="form-control" id="color" placeholder="Buscar por color"/>
+            </div>
+
+            <div class="col-sm-3 text-info">
+                <input type="text" class="form-control" id="aumento" placeholder="Establezer un aumento"/>
+            </div>
+
+            <button type="button" class="btn btn-info" title="Filtrar" onclick="Mostrar($('#marca').val() , $('#patente').val() , $('#color').val() , $('#aumento').val())">
+                <i class="glyphicon glyphicon-filter"></i>&ensp;Filtrar
+            </button>
+        </div>
+
         <div class="inner-bg">
             <div class="container-fluid">
                 <div class="row">
@@ -41,89 +62,27 @@
                 </div>
                 <br/>
                 <div class="table-responsive" style="background-color:white;">
-                    <table class="table table-bordered" id="tablaAutos"></table>
+                    <table class="table" id="tabla"></table>
                 </div>
+                <br/>
+
                 <div class="row">
-                    <div class="form-box">
 
-                        <div class="form-top text-info">
-                            <div class="form-top-left">
-                                <h3 class="h3 text-info text-uppercase">Estadistica</h3>
-                                <p class="lead">Ingrese la patente del auto, la fecha desde (obligatoria) y hasta (opcional) de los datos
-                                    que quiera ver:</p>
-                            </div>
-
-                        </div>
-
-                        <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form" id="form">
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Patente</label>
-                                    <div class="inputGroupContainer">
-                                        <div class="input-group">
-
-                                            <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-barcode"></i>
-                                            </span>
-
-                                            <input type="text" class="form-control" name="patente" id="txtPatente" placeholder="Patente" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Desde</label>
-                                    <div class="inputGroupContainer">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                            <input type="text" class="form-control" name="fecha" id="datetimepickerDesde" data-date-format="YYYY-MM-DD" placeholder="Desde"/>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Hasta</label>
-                                    <div class="inputGroupContainer">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                            <input type="text" class="form-control" name="fecha2" id="datetimepickerHasta" data-date-format="YYYY-MM-DD" placeholder="Hasta"/>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button type="submit" class="btn btn-info btn-block" id="btnEnviar">Enviar</button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="reset" class="btn btn-warning btn-block" id="btnEnviar">Limpiar</button>
-                                    </div>
-                                </div>
-
-                            </form>
-
-                        </div>
-                        <br/>
-
-                        <div class="col-md-6 col-sm-offset-3">
-                            <div class="row" id="divAlert"></div>
-                        </div>
-
-                    </div>
+                <div class="col-md-4 col-sm-offset-4">
+                    <div class="alert alert-info" style="display: none;" id="divAlertFiltro"></div>
                 </div>
+
+                </div>
+
+                <div class="row" style="display: none;" id="divFormEstadistica">
+                    <div class="form-box" id="divFormBoxEstadistica"></div>
+                </div>
+
+                <br/>
                 <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
-                        <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
-                    </button>
-                    <button type="button" class="btn btn-info" onclick="Mostrar()">
-                        <i class="glyphicon glyphicon-repeat"></i>&ensp;Refrescar lista
-                    </button>
+                    <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
+                </button>
+
             </div>
         </div>
 </body>

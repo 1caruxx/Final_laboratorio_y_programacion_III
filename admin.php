@@ -105,6 +105,12 @@
             return $response;
         });
 
+        $this->get("/cocheras[/]" , function(Request $request , Response $response) {
+    
+            BaseDeDatos::Listar($request , $response , "cocheras");
+            return $response;
+        });
+
     })->add(function($request , $response , $next) {
 
         Middleware::ValidarJWT($request , $response , $next , apache_request_headers()["token"]);

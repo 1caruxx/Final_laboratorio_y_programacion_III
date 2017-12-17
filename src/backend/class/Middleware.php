@@ -15,12 +15,12 @@
             try {
 
                 $conexcion = new PDO($datos , $user , $pass);
-                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."' OR `turno`='".$datosEmpleado["turno"]."'");
+                $resultados = $conexcion->prepare("SELECT * FROM `empleados` WHERE `mail`='".$datosEmpleado["mail"]."'"); // OR `turno`='".$datosEmpleado["turno"]."'
                 $resultados->execute();
 
                 if($fila = $resultados->fetch(PDO::FETCH_ASSOC)) {
 
-                    $response->getBody()->write('{"valido":"false","mensaje":"El empleado ya existe o esta ocupado el puesto."}');
+                    $response->getBody()->write('{"valido":"false","mensaje":"El empleado ya existe."}');
                 }
                 else {
 

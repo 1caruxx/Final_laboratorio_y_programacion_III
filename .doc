@@ -1,0 +1,53 @@
+Pagina web: https://fernando-lareu.000webhostapp.com/
+...
+Librerias:
+    Frontend: jQuery, Bootstrap, Bootstrap Validator, Sweet alert 2, Eonasdan Bootstrap datetimepicker.
+    Backend: SLIM, Firebase. 
+...
+Tipografia: Roboto, sans-serif
+...
+Gama de colores: Negro y azul
+...
+index.html
+...
+    Validadores:
+        Campo correo: Que no este vacio, que sea un mail valido, maximo de 25 caracteres.
+        Campo contraseña: Que no este vacio, entre 5 y 12 caracteres.
+...
+alta.html
+...
+    Validadores:
+        Campo apellido: Que no este vacio, maximo 30 caracteres.
+        Campo nombre: Que no este vacio, maximo 30 caracteres.
+        Campo correo: Que no este vacio, que sea un mail valido, maximo de 25 caracteres.
+        Foto: Extension .jpg y .png, maximo de 850 KB.
+        Clave: Que no este vacio, entre 5 y 12 caracteres.
+        Confirmacion: Que sea identico al campo clave.
+...
+ingresar.html
+...
+    Validadores:
+        Marca: Que no este vacio, maximo de 50 caracteres.
+        Patente: Que no este vacio, maximo 10 caracteres.
+        Color: Que no este vacio, que sea un color valido, maximo 20 caracteres.
+        Foto: Extension .jpg y .png, maximo de 850 KB.
+...
+historial.html
+...
+    Validadores:
+        Patente: Maximo 10 caracteres.
+        Fecha desde: Que no este vacio, que sea una fecha valida.
+        Fecha hasta: Que sea una fehca valida, que sea menor al campo Fecha desde.
+...
+listar.html
+...
+    Validadores:
+        Formulario de modificacion:
+            Campo apellido: Que no este vacio, maximo 30 caracteres.
+            Campo nombre: Que no este vacio, maximo 30 caracteres.
+            Foto: Extension .jpg y .png, maximo de 850 KB.
+            Clave: Que no este vacio, entre 5 y 12 caracteres.
+            Confirmacion: Que sea identico al campo clave.
+        Formulario de estadisticas:
+            Fecha desde: Que no este vacio, que sea una fecha valida.
+            Fecha hasta: Que sea una fehca valida, que sea menor al campo Fecha desde.

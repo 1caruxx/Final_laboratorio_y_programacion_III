@@ -5,11 +5,9 @@ body {
     color: black;
     line-height: 30px;
 	text-align: center;
-	
 }
 
 .bg { 
-
     background-image: url("./img/background.png");
     height: 100%; 
     background-position: center;
@@ -20,7 +18,7 @@ body {
 strong { font-weight: 500; }
 
 a, a:hover, a:focus {
-	color: #4aaf51;
+	color: white;
 	text-decoration: none;
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
@@ -43,12 +41,11 @@ h3 {
 img { max-width: 100%; }
 
 i {
-	color: rgb(97, 36, 12);
+	color: black;
 }
 
 ::-moz-selection { background: #4aaf51; color: #fff; text-shadow: none; }
 ::selection { background: #4aaf51; color: #fff; text-shadow: none; }
-
 
 .btn-link-1 {
 	display: inline-block;
@@ -63,10 +60,6 @@ i {
     -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
 .btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
-
-/* .btn-link-1.btn-link-1-facebook { background: #4862a3; }
-.btn-link-1.btn-link-1-twitter { background: #55acee; }
-.btn-link-1.btn-link-1-google-plus { background: #dd4b39; } */
 
 .btn-link-1 i {
 	padding-right: 5px;
@@ -95,7 +88,7 @@ i {
 /***** Top content *****/
 
 .inner-bg {
-    padding: 100px 0 170px 0;
+    padding: 50px 0 170px 0;
 }
 
 .top-content .text {
@@ -167,18 +160,6 @@ i {
 	border-color: #4aaf51;
 }
 
-/* .social-login {
-	margin-top: 35px;
-}
-
-.social-login h3 {
-	color: #fff;
-}
-
-.social-login-buttons {
-	margin-top: 25px;
-} */
-
 
 /***** Media queries *****/
 
@@ -197,3 +178,58 @@ i {
 	h1, h2 { font-size: 32px; }
 
 }
+
+/***** Tablas *****/
+.tabla {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabla td, .tabla th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+.tabla tr:hover {background-color: #ddd;}
+
+.tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tabla2 {
+	font-family: "Freestyle Script", Arial, Helvetica, sans-serif;
+	font-size: 30px;
+    border-collapse: collapse;
+	width: 100%;
+	background-color: rgb(252 , 245 , 222);
+
+}
+
+.tabla2 td, .tabla th {
+    border: 2px solid rgb(87 , 14 , 8);
+	padding: 8px;
+}
+
+.tabla2 tr:nth-child(even){background-color: rgb(245 , 217 , 171);} 
+
+.tabla2 tr:hover {background-color: rgb(250, 202, 124);}
+
+.tabla3 {
+    font-family: "Arial", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+	width: 100%;
+	background-color: rgb(137, 221, 214);
+}
+
+.tabla3 td, .tabla th {
+    padding: 8px;
+}
+
+.tabla3 tr:hover {background-color: #ddd;}

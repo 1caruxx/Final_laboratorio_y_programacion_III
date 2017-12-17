@@ -155,7 +155,7 @@
         public static function Estadistica($request , $response) {
 
             $datos = $request->getParsedBody();
-            $patente = $datos["patente"];
+            @$patente = $datos["patente"];
             $fecha = $datos["fecha"];
             @$fecha2 = $datos["fecha2"];
 
@@ -174,58 +174,106 @@
             $fecha = $fecha[0].$fecha[1].$fecha[2];
             $fecha = intval($fecha);
 
-            foreach($autos as $item) {
-            
-                if($item && $item->patente == $patente) {
-            
-                    $auto = $item;
-                    $array["promedioMensual"] = Auto::PromedioMensual(null , $auto);
-                    $encontrado = true;
-                    break;
-                }
-            }
+            if($patente) {
 
-            if(!$encontrado) {
-
-                $response->getBody()->write('{"valido":"false","mensaje":"Auto inexistente."}');
-                return;
-            }
-
-            if($fecha2) {
-
-                $fecha2 = explode("-" , $fecha2);
-                $fecha2 = $fecha2[0].$fecha2[1].$fecha2[2];
-                $fecha2 = intval($fecha2);
-
-                foreach($auto->importes as $importe) {
-
-                    $fechaImporte = explode("-" , $importe->fecha);
-                    $fechaImporte = $fechaImporte[0].$fechaImporte[1].$fechaImporte[2];
-                    $fechaImporte = intval($fechaImporte);
-
-                    if($fechaImporte>=$fecha && $fechaImporte<=$fecha2) {
-
-                        array_push($array["fechas"] , $importe);
-                        $array["importeTotal"] += floatval(number_format($importe->cantidad , 2));
-                        $array["visitasTotales"] += $importe->visitas;
+                foreach($autos as $item) {
+                    
+                    if($item && $item->patente == $patente) {
+                    
+                        $auto = $item;
+                        $array["promedioMensual"] = Auto::PromedioMensual(null , $auto);
+                        $encontrado = true;
+                        break;
                     }
                 }
+        
+                if(!$encontrado) {
+        
+                    $response->getBody()->write('{"valido":"false","mensaje":"Auto inexistente."}');
+                    return;
+                }
 
+                if($fecha2) {
+
+                    $fecha2 = explode("-" , $fecha2);
+                    $fecha2 = $fecha2[0].$fecha2[1].$fecha2[2];
+                    $fecha2 = intval($fecha2);
+
+                    foreach($auto->importes as $importe) {
+
+                        $fechaImporte = explode("-" , $importe->fecha);
+                        $fechaImporte = $fechaImporte[0].$fechaImporte[1].$fechaImporte[2];
+                        $fechaImporte = intval($fechaImporte);
+
+                        if($fechaImporte>=$fecha && $fechaImporte<=$fecha2) {
+
+                            array_push($array["fechas"] , $importe);
+                            $array["importeTotal"] += floatval(number_format($importe->cantidad , 2));
+                            $array["visitasTotales"] += $importe->visitas;
+                        }
+                    }
+                }
+                else {
+
+                    foreach($auto->importes as $importe) {
+
+                        $fechaImporte = explode("-" , $importe->fecha);
+                        $fechaImporte = $fechaImporte[0].$fechaImporte[1].$fechaImporte[2];
+                        $fechaImporte = intval($fechaImporte);
+                        
+                        if($fechaImporte == $fecha) {
+
+                            array_push($array["fechas"] , $importe);
+                            $array["importeTotal"] = floatval(number_format($importe->cantidad , 2));
+                            $array["visitasTotales"] = $importe->visitas;
+                            break;
+                        }
+                    }
+                }
             }
             else {
 
-                foreach($auto->importes as $importe) {
+                if($fecha2) {
 
-                    $fechaImporte = explode("-" , $importe->fecha);
-                    $fechaImporte = $fechaImporte[0].$fechaImporte[1].$fechaImporte[2];
-                    $fechaImporte = intval($fechaImporte);
-                    
-                    if($fechaImporte == $fecha) {
+                    $fecha2 = explode("-" , $fecha2);
+                    $fecha2 = $fecha2[0].$fecha2[1].$fecha2[2];
+                    $fecha2 = intval($fecha2);
 
-                        array_push($array["fechas"] , $importe);
-                        $array["importeTotal"] = floatval(number_format($importe->cantidad , 2));
-                        $array["visitasTotales"] = $importe->visitas;
-                        break;
+                    foreach($autos as $auto) {
+
+                        foreach($auto->importes as $importe) {
+
+                            $fechaImporte = explode("-" , $importe->fecha);
+                            $fechaImporte = $fechaImporte[0].$fechaImporte[1].$fechaImporte[2];
+                            $fechaImporte = intval($fechaImporte);
+
+                            if($fechaImporte>=$fecha && $fechaImporte<=$fecha2) {
+
+                                array_push($array["fechas"] , $importe);
+                                $array["importeTotal"] += floatval(number_format($importe->cantidad , 2));
+                                $array["visitasTotales"] += $importe->visitas;
+                            }
+                        }
+                    }
+                }
+                else {
+
+                    foreach($autos as $auto) {
+
+                        foreach($auto->importes as $importe) {
+
+                            $fechaImporte = explode("-" , $importe->fecha);
+                            $fechaImporte = $fechaImporte[0].$fechaImporte[1].$fechaImporte[2];
+                            $fechaImporte = intval($fechaImporte);
+                            
+                            if($fechaImporte == $fecha) {
+
+                                array_push($array["fechas"] , $importe);
+                                $array["importeTotal"] += floatval(number_format($importe->cantidad , 2));
+                                $array["visitasTotales"] += $importe->visitas;
+                                //break;
+                            }
+                        }
                     }
                 }
             }

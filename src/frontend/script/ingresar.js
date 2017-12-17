@@ -45,6 +45,7 @@ $(document).ready(function () {
                 color: {
                     validators: {
                         notEmpty: { message: "Se debe completar este campo." },
+                        color: { message: "Color no valido." },
                         stringLength: { max: 20, message: "Se admiten hasta un maximo de 20 caracteres." }
                     }
                 },
@@ -52,7 +53,7 @@ $(document).ready(function () {
                     validators: {
                         file: { extension: "jpg,png", maxSize: 850 * 1024, message: "Solo se admiten archivos con formato .jpg y .png. y de hasta 850 KB" }
                     }
-                },
+                }
             }
         })
         .on("success.form.bv", function (form) {
@@ -67,6 +68,8 @@ $(document).ready(function () {
                 formData.append("foto", archivo.files[0]);
             }
 
+            AdministrarGif(true);
+
             $.ajax({
                 
                 url: "./admin.php/auto/ingreso",
@@ -80,6 +83,8 @@ $(document).ready(function () {
                 async: true
             })
             .done(function (response) {
+
+                AdministrarGif(false);
 
                 if (response.valido == "true") {
 
@@ -105,11 +110,29 @@ $(document).ready(function () {
             })
             .fail(function (response) {
 
+                AdministrarGif(false);
+
                 alert("Algo salio mal: " + response);
             });
         });
     }
 });
+
+function AdministrarGif(mostrar) {
+    
+    var gif  = "./src/frontend/img/load.gif";
+    let img = document.getElementById("imgGif");
+    
+    if(mostrar){
+
+        img.src = gif;
+    }
+    
+    if(!mostrar){
+
+        img.src = "./src/frontend/img/favicon.ico";
+    }
+}
 
 function Deslogear() {
 

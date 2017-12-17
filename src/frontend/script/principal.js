@@ -29,9 +29,11 @@ $(document).ready(function() {
     }
 });
 
-function Mostrar() {
+function Mostrar(marca=null , patente=null , color=null) {
 
     var foto = "";
+
+    AdministrarGif(true);
 
     $.ajax({
 
@@ -42,25 +44,79 @@ function Mostrar() {
         async: true
     })
     .done(function(response) {
+
+        AdministrarGif(false);
           
         if(response != null) {
+
+            let div = "";
         
             let autosAparcados = response.filter(function(item) {
                             
                 return item.fecha_salida == null;
             });
 
-            stringAuxiliar = `<tr>
-                                <td><h4>ID</h4></td>
-                                <td><h4>Patente</h4></td>
-                                <td><h4>Marca</h4></td>
-                                <td><h4>Color</h4></td>
-                                <td><h4>Id empleado entrada</h4></td>
-                                <td><h4>Fecha ingreso</h4></td>
-                                <td><h4>Id cochera</h4></td>
-                                <td><h4>Foto</h4></td>
-                                <td><h4>Accion</h4></td>
-                              </tr>`;
+            if(marca) {
+
+                let cantidadPorMarca = (autosAparcados = autosAparcados.filter(function(item) {
+                    
+                    return item.marca == marca;
+                })).reduce((valor) => valor + 1 , 0);
+                
+                div = `Hay ${cantidadPorMarca} auto(s) de la marca ${marca}`;
+            }
+
+            if(patente) {
+
+                autosAparcados = autosAparcados.filter(function(item) {
+                                    
+                    return item.patente == patente;
+                });
+            }
+
+            if(color) {
+                                
+                var cantidadPorColor = (autosAparcados = autosAparcados.filter(function(item) {
+                                                    
+                    return item.color == color;
+                })).reduce((valor) => valor + 1 , 0);
+
+                if(marca) { div += `<br/>Hay ${cantidadPorColor} auto(s) de color ${color}`; }
+                else { div += `Hay ${cantidadPorColor} auto(s) de color ${color}`; }
+            }
+
+            if(marca=="" ^ color=="") {
+
+                $("#divAlert").attr("style" , "");
+                $("#divAlert").html(div);
+            }
+            else {
+                if(marca && color) {
+
+                    $("#divAlert").attr("style" , "");
+                    $("#divAlert").html(`Hay ${cantidadPorColor} auto(s) de color ${color} y de marca ${marca}`);
+
+                }
+                else {
+
+                $("#divAlert").attr("style" , "display: none;");
+                $("#divAlert").html("");
+                }
+            }
+
+
+            stringAuxiliar = `<tbody>
+                                <tr style="background-color: rgb(209, 208, 208);">
+                                    <td><h4>ID</h4></td>
+                                    <td><h4>Patente</h4></td>
+                                    <td><h4>Marca</h4></td>
+                                    <td><h4>Color</h4></td>
+                                    <td><h4>ID empleado entrada</h4></td>
+                                    <td><h4>Fecha ingreso</h4></td>
+                                    <td><h4>ID cochera</h4></td>
+                                    <td><h4>Foto</h4></td>
+                                    <td><h4>Accion</h4></td>
+                                </tr>`;
         
             for(let item of autosAparcados) {
 
@@ -71,23 +127,29 @@ function Mostrar() {
                                     <td>${item.id}</td>
                                     <td>${item.patente}</td>
                                     <td>${item.marca}</td>
-                                    <td>${item.color}</td>
+                                    <td><div style="background-color: ${item.color};">${item.color}</div></td>
                                     <td>${item.id_empleado_entrada}</td>
                                     <td>${item.fecha_ingreso}</td>
                                     <td>${item.id_cochera}</td>
                                     <td><img src="${foto}" width="50px" height="50px"/></td>
-                                    <td><button type="button" class="btn btn-info" onclick="Egresar('${item.patente}')">Egresar</button></td>
+                                    <td><button type="button" class="btn btn-info" onclick="Egresar('${item.patente}')" title="Egresar"><i class="glyphicon glyphicon-share-alt"></i></button></td>
                                 </tr>`;
             }
-        
-            $("#tablaAutos").html(stringAuxiliar);
+
+            stringAuxiliar += "</tbody>";
+
+            $("#tabla").html(stringAuxiliar);
         }
         else {
+
+            AdministrarGif(false);
                         
             $("#divAlert").html(`<div class='alert alert-danger'>${response.mensaje}</div>`);
         }
     })
     .fail(function(response) {
+
+        AdministrarGif(false);
                     
         alert("Algo salio mal: " + response);
     });
@@ -112,7 +174,10 @@ function Egresar(patente) {
                 'Exito!',
                 response.mensaje,
                 'success'
-            );
+            ).then(() => {
+
+                Mostrar();
+            });
         }
         else {
 
@@ -129,17 +194,20 @@ function Egresar(patente) {
     });
 }
 
-function MostrarDatos() {
+function AdministrarGif(mostrar) {
+    
+    var gif  = "./src/frontend/img/load.gif";
+    let img = document.getElementById("imgGif");
+    
+    if(mostrar){
 
-    var datos = JSON.parse(localStorage.getItem("empleado"));
+        img.src = gif;
+    }
+    
+    if(!mostrar){
 
-    swal(
-        {title: 'Tus datos',
-        text: `ID: ${datos.id}\nApellido: ${datos.apellido}`,
-        text2: "hola",
-        type: 'info',
-        confirmButtonText: 'Me parece correcto'}
-    );
+        img.src = "./src/frontend/img/favicon.ico";
+    }
 }
 
 function Deslogear() {

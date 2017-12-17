@@ -97,6 +97,8 @@ $(document).ready(function () {
                     formData.append("foto", archivo.files[0]);
                 }
 
+                AdministrarGif(true);
+
                 $.ajax({
                     
                     url: "./admin.php/empleado",
@@ -111,6 +113,8 @@ $(document).ready(function () {
                 })
                 .done(function (response) {
 
+                    AdministrarGif(false);
+
                     if (response.valido == "true") {
 
                         swal(
@@ -120,7 +124,7 @@ $(document).ready(function () {
                             'success'
                         ).then(() => {
 
-                            location.href = "./principal.html";
+                            location.href = "./listar.html";
                         });
                     }
                     else {
@@ -135,12 +139,29 @@ $(document).ready(function () {
                 })
                 .fail(function (response) {
 
+                    AdministrarGif(false);
                     alert("Algo salio mal: " + response);
                 });
             });
         }
     }
 });
+
+function AdministrarGif(mostrar) {
+    
+    var gif  = "./src/frontend/img/load.gif";
+    let img = document.getElementById("imgGif");
+    
+    if(mostrar){
+
+        img.src = gif;
+    }
+    
+    if(!mostrar){
+
+        img.src = "./src/frontend/img/favicon.ico";
+    }
+}
 
 function Deslogear() {
 

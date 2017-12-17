@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Principal</title>
+    <title>Cocheras</title>
     <link href="./src/frontend/img/favicon.ico" rel="icon" type="image/png" />
 
     <script type="text/javascript" src="./vendor/jquery/dist/jquery.min.js"></script>
@@ -13,13 +13,16 @@
     <script type="text/javascript" src="./vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript" src="./vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
+    <script src="./vendor/moment/moment.js"></script>
+    <script src="./vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="./src/frontend/styles.css">
 
     <script type="text/javascript" src="./src/frontend/script/Manejadora.js"></script>
-    <script type="text/javascript" src="./src/frontend/script/principal.js"></script>
+    <script type="text/javascript" src="./src/frontend/script/cocheras.js"></script>
 </head>
 
 <body class="bg" id="bd">
@@ -27,49 +30,40 @@
 
         <div class="row" id="barra"></div>
 
-        <div class="row col-sm-offset-2">
-            <div class="col-sm-3 text-info">
-                <input type="text" class="form-control" id="marca" placeholder="Buscar por marca"/>
-            </div>
-            <div class="col-sm-3  text-info">
-                <input type="text" class="form-control" id="patente" placeholder="Buscar por patente"/>
-            </div>
-
-            <div class="col-sm-3 text-info">
-                <input type="text" class="form-control" id="color" placeholder="Buscar por color"/>
-            </div>
-
-            <button type="button" class="btn btn-info" title="Filtrar" onclick="Mostrar($('#marca').val() , $('#patente').val() , $('#color').val())">
-                <i class="glyphicon glyphicon-filter"></i>&ensp;Filtrar
-            </button>
-        </div>
-
         <div class="inner-bg">
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 text-info">
                         <h1 class="">
-                            <strong>Autos alojados</strong>
+                            <strong>Cocheras</strong>
                         </h1>
                     </div>
                 </div>
-
                 <br/>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div id="disponibilidad" style="text-align:start;" class="alert alert-warning"></div>
+                    </div>
+                </div>
+
                 <div class="table-responsive" style="background-color:white;">
-                    <table class="table" id="tabla">
+                    <table class="table" id="tabla"></table>
+                </div>
 
-                    </table>
+                <div class="row" style="display: none;" id="divFormEstadistica">
+                    <div class="form-box" id="divFormBoxEstadistica"></div>
                 </div>
 
                 <br/>
-                <div class="col-md-4 col-sm-offset-4">
-                    <div class="alert alert-info" style="display: none;" id="divAlert"></div>
-                </div>
+                <button type="button" class="btn btn-info" onclick="Clases.Manejadora.Volver()">
+                    <i class="glyphicon glyphicon-arrow-left"></i>&ensp;Volver
+                </button>
+
             </div>
-            
         </div>
     </div>
-
 </body>
 
 </html>
