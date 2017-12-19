@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2017 a las 00:10:24
+-- Tiempo de generación: 19-12-2017 a las 18:07:05
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -59,7 +59,8 @@ INSERT INTO `administracion` (`id`, `patente`, `marca`, `color`, `foto`, `id_emp
 (20, '67ygh', 'ford', 'yellow', NULL, 4, '2017-12-14 22:43:09', 3, 4, '2017-12-16 11:08:43', 94.17, 12),
 (21, '57yf5r', 'renault', 'beige', NULL, 4, '2017-12-14 23:02:02', 4, 4, '2017-12-16 11:08:45', 91, 12),
 (22, '7yt54r', 'mercedes', 'yellow', NULL, 4, '2017-12-14 23:02:57', 5, 4, '2017-12-16 11:08:47', 90.83, 12),
-(23, '3e', 'renault', 'orange', NULL, 10, '2017-12-17 10:29:47', 1, 9, '2017-12-17 13:37:35', 31.17, 3);
+(23, '3e', 'renault', 'orange', NULL, 10, '2017-12-17 10:29:47', 1, 9, '2017-12-17 13:37:35', 31.17, 3),
+(24, '4w', 'fiat', 'orange', NULL, 9, '2017-12-19 13:20:55', 1, 0, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ CREATE TABLE `cocheras` (
 --
 
 INSERT INTO `cocheras` (`id`, `piso`, `numero`, `ocupada`, `especial`) VALUES
-(1, 1, 43, 0, 1),
+(1, 1, 43, 1, 1),
 (2, 2, 74, 0, 0),
 (3, 3, 89, 0, 0),
 (4, 2, 35, 0, 1),
@@ -111,7 +112,7 @@ CREATE TABLE `empleados` (
 
 INSERT INTO `empleados` (`id`, `apellido`, `nombre`, `clave`, `mail`, `turno`, `sexo`, `foto`, `estado`, `perfil`) VALUES
 (4, 'Lareu', 'Fernando', '12345', 'fernando@hotmail.com', 'M', 'M', NULL, 1, 'administrador'),
-(7, 'Mendez', 'Carla', '12345', 'maria@hotmail.com', 'T', 'F', '104228.jpg', 1, 'empleado'),
+(7, 'Mendez', 'Carla', '12345', 'maria@hotmail.com', 'T', 'F', '104228.jpg', 2, 'empleado'),
 (8, 'Jefferson', 'Thomas', '12345', 'tomas@hotmail.com', 'T', 'M', '102915.jpg', 0, 'empleado'),
 (9, 'dsds', 'dsdsd', '12345', 'julian@hotmail.com', 'M', 'M', NULL, 1, 'empleado'),
 (10, 'Lareu', 'Maria', '12345', 'javvv@hotmail.com', 'M', 'M', NULL, 1, 'empleado');
@@ -146,7 +147,7 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `administracion`
 --
 ALTER TABLE `administracion`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `cocheras`
 --

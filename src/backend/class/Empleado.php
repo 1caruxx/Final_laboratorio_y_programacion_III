@@ -191,7 +191,8 @@
 
                 foreach($empleado->logins as $login) {
 
-                    $fechaLogin = explode("-" , substr($empleado->logins[0] , 0 , 10));
+                    $fechaLogin = explode("-" , substr($login , 0 , 10));
+            
                     $fechaLogin = $fechaLogin[0].$fechaLogin[1].$fechaLogin[2];
                     $fechaLogin = intval($fechaLogin);
 
@@ -221,7 +222,7 @@
 
                 foreach($empleado->logins as $login) {
                     
-                    $fechaLogin = explode("-" , substr($empleado->logins[0] , 0 , 10));
+                    $fechaLogin = explode("-" , substr($login , 0 , 10));
                     $fechaLogin = $fechaLogin[0].$fechaLogin[1].$fechaLogin[2];
                     $fechaLogin = intval($fechaLogin);
                     
