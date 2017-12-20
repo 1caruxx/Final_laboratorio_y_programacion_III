@@ -92,7 +92,7 @@ Los lenguajes utilizados fueron:
 * Maximiliano Neiner
 * [Mario Rampi](https://github.com/MarioAr)
 
-## Autor
+## Autores
 
 * Fernando Lareu - [1caruxx](https://github.com/1caruxx)
 * [Agostina Buzeta](https://github.com/buzetaagostina)
