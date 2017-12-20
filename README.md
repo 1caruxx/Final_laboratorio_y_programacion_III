@@ -95,6 +95,7 @@ Los lenguajes utilizados fueron:
 ## Autor
 
 * Fernando Lareu - [1caruxx](https://github.com/1caruxx)
+* [Agostina Buzeta](https://github.com/buzetaagostina)
 
 # License
 
